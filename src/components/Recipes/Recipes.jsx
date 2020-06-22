@@ -51,7 +51,7 @@ const Recipe = ({ query }) => {
     setLoaded(false);
     fetchRecipies(URI);
   }, [URI]);
-
+  // TODO: Extraer en componentes error y no encontrado recetas
   return (
     <div>
       {error ? (
