@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
-// import style from "./InputSearch.module.css";
+import style from "./InputSearch.module.css";
 
 const Form = ({ getQuery }) => {
   const [inputUser, setInputUser] = useState("");
@@ -17,15 +18,17 @@ const Form = ({ getQuery }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={style.form} onSubmit={handleSubmit}>
       <input
         type="text"
         name="search"
         id="search"
         value={inputUser}
         onChange={handleChange}
+        className={style.search}
+        placeholder="Buscar receta"
       />
-      <button>Buscar</button>
+      <FaSearch className={style.fa} onClick={handleSubmit} />
     </form>
   );
 };

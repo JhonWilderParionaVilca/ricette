@@ -4,6 +4,8 @@ import List from "../List/List";
 
 // const URI = `https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
+import style from "./Recipes.module.css";
+
 const Recipe = ({ query }) => {
   const URI = `https://test-es.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
@@ -21,14 +23,22 @@ const Recipe = ({ query }) => {
 
   const paintRecipes = ({ recipe }, index) => {
     return (
-      <div key={index}>
-        <img src={recipe.image} alt={recipe.label} width="180" />
-        <h2>{recipe.label}</h2>
-        <List ingredients={recipe.ingredientLines} />
-        <a href={recipe.url} target="_blank" rel="noopener noreferrer">
-          <button>Instrucciones</button>
-        </a>
-      </div>
+      <article key={index} className={style.card}>
+        <div className={style["card-wrapper"]}>
+          <div className={style["card-image"]}>
+            <img
+              src={recipe.image}
+              alt={recipe.label}
+              className={style["card-avatar"]}
+            />
+          </div>
+          <h2 className={style["card-title"]}>{recipe.label}</h2>
+          <List ingredients={recipe.ingredientLines} />
+          <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+            <button>Instrucciones</button>
+          </a>
+        </div>
+      </article>
     );
   };
 
@@ -37,7 +47,7 @@ const Recipe = ({ query }) => {
   }, [URI]);
 
   return (
-    <section>
+    <section className={style["container-center"]}>
       {typeof recipes != "undefined" &&
       recipes != null &&
       recipes.length != null &&
@@ -46,7 +56,7 @@ const Recipe = ({ query }) => {
           return paintRecipes(recipe, index);
         })
       ) : (
-        <div>"Cargando...."</div>
+        <div>"No se encontraron recetas"</div>
       )}
     </section>
   );

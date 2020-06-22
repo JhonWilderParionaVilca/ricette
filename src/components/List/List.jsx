@@ -1,10 +1,17 @@
 import React from "react";
 
+import style from "./List.module.css";
+
 const List = ({ ingredients }) => {
   return (
-    <ul>
+    <ul className={style.list}>
       {ingredients.map((item, index) => {
-        return <li key={index}> {item}</li>;
+        return (
+          <li key={index} className={style["list-item"]}>
+            {" "}
+            {item}
+          </li>
+        );
       })}
     </ul>
   );
