@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import List from "../List/List";
-
+import Loader from "../Loader/Loader";
 // const URI = `https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
 import style from "./Recipes.module.css";
@@ -10,14 +10,19 @@ const Recipe = ({ query }) => {
   const URI = `https://test-es.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
   const [recipes, setRecipes] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchRecipies = async (URI) => {
     try {
       const response = await fetch(URI);
       const data = await response.json();
       setRecipes(data.hits);
+      setError(false);
+      setLoaded(true);
     } catch (error) {
       console.error("🔥: fetchRecipies -> error de red", error);
+      setError(true);
     }
   };
 
@@ -43,22 +48,56 @@ const Recipe = ({ query }) => {
   };
 
   useEffect(() => {
+    setLoaded(false);
     fetchRecipies(URI);
   }, [URI]);
 
   return (
-    <section className={style["container-center"]}>
-      {typeof recipes != "undefined" &&
-      recipes != null &&
-      recipes.length != null &&
-      recipes.length > 0 ? (
-        recipes.map((recipe, index) => {
-          return paintRecipes(recipe, index);
-        })
+    <div>
+      {error ? (
+        <div className={style.error}>
+          <p className={style["error-title"]}>
+            Opss!{" "}
+            <span role="img" aria-label="emoji">
+              😢
+            </span>{" "}
+            Ocurrio un error en el servidor
+          </p>
+          <p className={style["error-description"]}>
+            Contacte con el desarrollador por favor.
+          </p>
+        </div>
+      ) : loaded ? (
+        typeof recipes != "undefined" &&
+        recipes != null &&
+        recipes.length != null &&
+        recipes.length > 0 ? (
+          <section className={style["container-center"]}>
+            {recipes.map((recipe, index) => {
+              return paintRecipes(recipe, index);
+            })}
+          </section>
+        ) : (
+          <div className={style.error}>
+            <p className={style["error-title"]}>
+              Opss!{" "}
+              <span role="img" aria-label="emoji">
+                🥺
+              </span>{" "}
+              NO se encontraron recetas
+            </p>
+            <p className={style["error-description"]}>
+              Intente buscando otras recetas
+            </p>
+            <span role="img" aria-label="emoji">
+              🙂
+            </span>{" "}
+          </div>
+        )
       ) : (
-        <div>"No se encontraron recetas"</div>
+        <Loader />
       )}
-    </section>
+    </div>
   );
 };
 
