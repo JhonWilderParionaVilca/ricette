@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ricette/static/css/main.d59bfdbb.chunk.css",
-    "main.js": "/ricette/static/js/main.f56216d7.chunk.js",
-    "main.js.map": "/ricette/static/js/main.f56216d7.chunk.js.map",
+    "main.js": "/ricette/static/js/main.ac73f900.chunk.js",
+    "main.js.map": "/ricette/static/js/main.ac73f900.chunk.js.map",
     "runtime-main.js": "/ricette/static/js/runtime-main.3794f476.js",
     "runtime-main.js.map": "/ricette/static/js/runtime-main.3794f476.js.map",
     "static/js/2.0d0dab9d.chunk.js": "/ricette/static/js/2.0d0dab9d.chunk.js",
     "static/js/2.0d0dab9d.chunk.js.map": "/ricette/static/js/2.0d0dab9d.chunk.js.map",
     "index.html": "/ricette/index.html",
-    "precache-manifest.c76ff64eae106ae573324c532db5cb03.js": "/ricette/precache-manifest.c76ff64eae106ae573324c532db5cb03.js",
+    "precache-manifest.ed41215715fba343d40de4ed5f52fab1.js": "/ricette/precache-manifest.ed41215715fba343d40de4ed5f52fab1.js",
     "service-worker.js": "/ricette/service-worker.js",
     "static/css/main.d59bfdbb.chunk.css.map": "/ricette/static/css/main.d59bfdbb.chunk.css.map",
     "static/js/2.0d0dab9d.chunk.js.LICENSE.txt": "/ricette/static/js/2.0d0dab9d.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3794f476.js",
     "static/js/2.0d0dab9d.chunk.js",
     "static/css/main.d59bfdbb.chunk.css",
-    "static/js/main.f56216d7.chunk.js"
+    "static/js/main.ac73f900.chunk.js"
   ]
 }
