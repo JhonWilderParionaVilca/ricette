@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import List from "../List/List";
 import Loader from "../Loader/Loader";
-// const URI = `https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
 import style from "./Recipes.module.css";
 
 const Recipe = ({ query }) => {
-  const URI = `https://test-es.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
+  // const URI = `https://test-es.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
+  const URI = `https://api.edamam.com/search?q=${query}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
   const [recipes, setRecipes] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -16,6 +16,7 @@ const Recipe = ({ query }) => {
   const fetchRecipies = async (URI) => {
     try {
       const response = await fetch(URI);
+      console.log("🔥: fetchRecipies -> response", response);
       const data = await response.json();
       setRecipes(data.hits);
       setError(false);
