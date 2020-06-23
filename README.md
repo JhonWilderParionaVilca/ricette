@@ -6,6 +6,8 @@
 
 <h3 align="center">🍲 Encuentra recetas de manera sencilla y fácil</h3>
 
+![Deploy to GitHub Pages](https://github.com/wilderPariona/ricette/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)
+
 [🌐 Demo](https://wilderpariona.github.io/ricette/)
 
 ![web](https://raw.githubusercontent.com/jhonPariona/images/master/reciite/ricette.gif)
